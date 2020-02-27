@@ -1,0 +1,39 @@
+models:
+  User:
+    id: id
+    name: nullable  string:150
+    password: string:150
+    email: string:100 nullable
+    integer: integer nullable
+  Post:
+    titulo: string:400
+    titulo2: string
+    conteudo: text
+    conteudo2: text
+    anexo: text
+    published_at: nullable timestamp
+  PontoBatida:
+      userId: id:user
+      horario: datetime
+      tipoHorario: char:1
+
+
+controllers:
+  Post:
+    index:
+      query: all
+      render: post.index with:posts
+
+    store:
+      validate: titulo, conteudo ,anexo
+      save: post
+      redirect: post.index
+  PontoBatida:
+    index:
+      query: all
+      render: pontoBatida.index with:pontoBatidas
+
+    store:
+      validate: horario
+      save: pontoBatida
+      redirect: pontoBatida.index

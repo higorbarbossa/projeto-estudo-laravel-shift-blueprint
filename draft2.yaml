@@ -32,3 +32,13 @@ models:
     repeat: integer nullable
     obs: text:150
     tags: string
+
+
+
+controllers:
+  User:
+  Account:
+  AccountType:
+  Transaction:
+  TransactionType:
+
