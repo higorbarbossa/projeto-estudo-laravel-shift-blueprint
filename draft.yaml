@@ -4,6 +4,7 @@ models:
     name: string:150
     password: string:150
     email: string:100
+    accounts: Account.where:user.id
 
   AccountType:
     id: id
@@ -13,7 +14,8 @@ models:
     id: id
     name: string:150
     balance: decimal:10,2
-    accountType_Id: id:AccountType
+    accountType_Id: id
+    user_id: id
 
   TransactionType:
     id: id
@@ -32,3 +34,19 @@ models:
     repeat: integer nullable
     obs: text:150
     tags: string
+
+
+controllers:
+  User:
+    index:
+      query: all
+    show:
+      find: id
+  Account:
+    index:
+      query: where:user_id
+    show:
+      find: id
+    showUser:
+      find: User.id
+      render: accoount.showUser with:user

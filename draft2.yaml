@@ -37,6 +37,9 @@ models:
 
 controllers:
   User:
+    index:
+      query: all
+      find: id
   Account:
   AccountType:
   Transaction:
